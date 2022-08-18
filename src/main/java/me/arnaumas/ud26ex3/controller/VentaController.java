@@ -27,7 +27,7 @@ public class VentaController {
 	}
 
 	@GetMapping("/ventas/{id}")
-	public Venta ventasXID(@PathVariable(name = "Codigo") int id) {
+	public Venta ventasXID(@PathVariable(name = "id") int id) {
 
 		Venta Ventas_xid = new Venta();
 
