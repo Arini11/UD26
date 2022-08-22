@@ -12,26 +12,57 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
 @Entity
 @Table(name = "piezas")
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class Piezas {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private @Getter @Setter Long id;
+	private Long id;
 
-	private @Getter @Setter String nombre;
+	private String nombre;
 
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pieza")
-	private @Getter @Setter List<Suministra> suministra;
+	private List<Suministra> suministra;
+	
+	
+
+	public Piezas(Long id, String nombre, List<Suministra> suministra) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.suministra = suministra;
+	}
+
+	public Piezas() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public List<Suministra> getSuministra() {
+		return suministra;
+	}
+
+	public void setSuministra(List<Suministra> suministra) {
+		this.suministra = suministra;
+	}
+	
+	
 }
